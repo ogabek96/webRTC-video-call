@@ -9,6 +9,11 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
 });
 
+app.get("/room/:roomName", (req, res) => {
+  console.log(req.params.roomName);
+  res.sendFile(__dirname + "/public/room.html");
+});
+
 const server = http.createServer(app);
 
 const io = socket(server);
