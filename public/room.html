@@ -12,31 +12,40 @@
     video {
       width: 100% !important;
       height: auto !important;
-      object-fit: fill !important;
     }
 
     video::-webkit-media-controls {
       display: none !important;
     }
 
-    .container {
+    .container-fluid {
       margin-top: 3%;
+    }
+
+    .row.display-flex {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .row.display-flex>[class*='col-'] {
+      display: flex;
+      flex-direction: column;
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
-      <div class="col">
+      <div class="col-md">
         <div class="card">
           <div class="card-body">
             <video id="localView" autoplay muted></video>
           </div>
         </div>
       </div>
-      <div class="col">
-        <div class="card">
+      <div class="col-md">
+        <div class="card h-100">
           <div class="card-body">
             <video id="remoteView" autoplay></video>
           </div>
@@ -46,8 +55,9 @@
     <div class="row mt-2">
       <div class="col">
         <button id="shareScreen" type="button" class="btn btn-primary" onclick="shareScreen()">Share screen</button>
-        <button id="stopShareScreen" type="button" class="btn btn-warning" style="display: none;" onclick="stopShareScreen()"> Stop Share screen</button>
-        <button type="button" class="btn btn-danger">Leave room</button>
+        <button id="stopShareScreen" type="button" class="btn btn-warning" style="display: none;"
+          onclick="stopShareScreen()"> Stop Share screen</button>
+        <a href= "/" type="button" class="btn btn-danger">Leave room</a>
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

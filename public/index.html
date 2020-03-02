@@ -13,9 +13,9 @@
 <body>
 
   <body class="text-center">
-    <form class="form-signin">
+    <form class="form-signin" action="/room" method="POST">
       <h1 class="h3 mb-3 font-weight-normal">Please enter room name to create or to join:</h1>
-      <input type="text" id="inputEmail" class="form-control mb-3" placeholder="Room name" required autofocus>
+      <input type="text" name="roomName" class="form-control mb-3" placeholder="Room name" required autofocus>
       <button class="btn btn-sm btn-primary btn-block" type="submit">Enter</button>
     </form>
   </body>

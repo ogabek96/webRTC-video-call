@@ -1,16 +1,23 @@
 let connection;
 const existingTracks = [];
 const configuration = {
-  // iceServers: [
-  //   {
-  //     urls: ""
-  //   },
-  //   {
-  //     urls: "turn:" + turnServerIPAddress + ":" + turnServerPort,
-  //     username: turnServerUserName,
-  //     credential: turnServerPassword
-  //   }
-  // ]
+  iceServers: [
+    {
+      urls: "stun1.l.google.com:19302"
+    },
+    {
+      urls: "stun2.l.google.com:19302"
+    },
+    {
+      urls: "stun3.l.google.com:19302"
+    }
+    // ,
+    // {
+    //   urls: "turn:" + turnServerIPAddress + ":" + turnServerPort,
+    //   username: turnServerUserName,
+    //   credential: turnServerPassword
+    // }
+  ]
 };
 
 socket.on("update", data => {
@@ -24,29 +31,37 @@ socket.on("update", data => {
     if (handsh.type === "answer") {
       handleAnswer(handsh);
     }
-  } else if(data.iceCandidate) {
+  } else if (data.iceCandidate) {
     handleCandidate(data.iceCandidate);
   }
 });
 
 function createRTCPeerConnection() {
-  connection = new RTCPeerConnection(configuration);
-  for (const track of localStream.getTracks()) {
-    existingTracks.push(connection.addTrack(track, localStream));
-  }
+  return new Promise((resolve, reject) => {
+    try {
+      connection = new RTCPeerConnection(configuration);
 
-  connection.ontrack = event => {
-    console.log("on track");
-    remoteView.srcObject = event.streams[0];
-  };
+      for (const track of localStream.getTracks()) {
+        existingTracks.push(connection.addTrack(track, localStream));
+      }
 
-  connection.onicecandidate = event => {
-    if (event.candidate) {
-      // console.log(event.candidate);
-      // console.log("on ice candidate");
-      socket.emit("update", { iceCandidate: event.candidate, roomName });
+      connection.ontrack = event => {
+        console.log("on track");
+        remoteView.srcObject = event.streams[0];
+      };
+
+      connection.onicecandidate = event => {
+        if (event.candidate) {
+          // console.log(event.candidate);
+          // console.log("on ice candidate");
+          socket.emit("update", { iceCandidate: event.candidate, roomName });
+        }
+      };
+      resolve(true);
+    } catch (e) {
+      reject(e);
     }
-  };
+  });
 }
 
 async function createAndSendOffer() {
@@ -80,11 +95,14 @@ async function handleAnswer(answer) {
 }
 
 function handleCandidate(candidate) {
-  console.log('handleCandidate', candidate);
+  console.log("handleCandidate", candidate);
   connection.addIceCandidate(new RTCIceCandidate(candidate));
 }
 
-setTimeout(() => {
-  createRTCPeerConnection();
-  createAndSendOffer();
-}, 5000);
+localCameraView()
+  .then(() => {
+    return createRTCPeerConnection();
+  })
+  .then(() => {
+    createAndSendOffer();
+  });

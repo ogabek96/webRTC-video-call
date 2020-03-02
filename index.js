@@ -1,6 +1,7 @@
-const fs = require('fs');
+const fs = require("fs");
 const http = require("http");
 const express = require("express");
+const bodyParser = require("body-parser");
 const socket = require("socket.io");
 const users = require("./users");
 const app = express();
@@ -8,13 +9,15 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + "/public"));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
 });
-
+app.post("/room", (req, res) => {
+  res.redirect("/room/" + req.body.roomName);
+});
 app.get("/room/:roomName", (req, res) => {
-  console.log(req.params.roomName);
   res.sendFile(__dirname + "/public/room.html");
 });
 
