@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <title>WebRTC room</title>
+  <script src="/socket.io/socket.io.js"></script>
   <style>
     video {
       width: 100% !important;
@@ -37,7 +38,7 @@
       <div class="col">
         <div class="card">
           <div class="card-body">
-            <video id="removeView" autoplay></video>
+            <video id="remoteView" autoplay></video>
           </div>
         </div>
       </div>
@@ -60,6 +61,8 @@
       crossorigin="anonymous"></script>
     <script src="/js/fullscreen.js"></script>
     <script src="/js/room.js"></script>
+    <script src="/js/socket.js"></script>
+    <script src="/js/webRtc.js"></script>
 </body>
 
 </html>

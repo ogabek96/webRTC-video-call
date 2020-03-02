@@ -45,4 +45,7 @@ async function stopShareScreen() {
 }
 
 localView.addEventListener("dblclick", openFullscreen);
-localCameraView();
+setTimeout(() => {
+  localCameraView();
+
+});
