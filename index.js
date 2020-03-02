@@ -1,5 +1,5 @@
 const fs = require('fs');
-const https = require("https");
+const http = require("http");
 const express = require("express");
 const socket = require("socket.io");
 const users = require("./users");
@@ -18,12 +18,12 @@ app.get("/room/:roomName", (req, res) => {
   res.sendFile(__dirname + "/public/room.html");
 });
 
-const server = https.createServer({
-  key: fs.readFileSync(__dirname + '/keys/server.key'),
-  cert: fs.readFileSync(__dirname + '/keys/server.cert')
-},app);
+// const server = https.createServer({
+//   key: fs.readFileSync(__dirname + '/keys/server.key'),
+//   cert: fs.readFileSync(__dirname + '/keys/server.cert')
+// },app);
 
-// const server = http.createServer(app);
+const server = http.createServer(app);
 
 const io = socket(server);
 
