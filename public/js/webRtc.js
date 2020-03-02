@@ -10,6 +10,11 @@ const configuration = {
     },
     {
       urls: "stun:stun3.l.google.com:19302"
+    },
+    {
+      'urls': 'turn:turnserver.appearin.net:443?transport=udp',
+      'credential': 'y56NfaOk+6K3lSnqTNHv1n3kflM=',
+      'username': '779e24a7-7216-4879-b304-efc9c76cffd7:1583001639'
     }
     // ,
     // {
