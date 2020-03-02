@@ -8,10 +8,7 @@ let localStream;
 async function localCameraView() {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({
-      video: {
-        width: 640,
-        height: 640
-      },
+      video: true,
       audio: true
     });
     localView.srcObject = stream;
