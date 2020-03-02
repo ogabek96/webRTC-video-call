@@ -2,19 +2,19 @@ let connection;
 const existingTracks = [];
 const configuration = {
   iceServers: [
+    // {
+    //   urls: "stun:stun1.l.google.com:19302"
+    // },
+    // {
+    //   urls: "stun:stun2.l.google.com:19302"
+    // },
+    // {
+    //   urls: "stun:stun3.l.google.com:19302"
+    // },
     {
-      urls: "stun:stun1.l.google.com:19302"
-    },
-    {
-      urls: "stun:stun2.l.google.com:19302"
-    },
-    {
-      urls: "stun:stun3.l.google.com:19302"
-    },
-    {
-      'urls': 'turn:turnserver.appearin.net:443?transport=udp',
-      'credential': 'y56NfaOk+6K3lSnqTNHv1n3kflM=',
-      'username': '779e24a7-7216-4879-b304-efc9c76cffd7:1583001639'
+      urls: 'turn:turnserver.appearin.net:443?transport=udp',
+      credential: 'Vnin1sKI3UWBaXNlXJlL8Y+a9Co=',
+      username: 'cee6db54-9811-4ce4-9520-f73f2e2403a3:1583256285'
     }
     // ,
     // {
