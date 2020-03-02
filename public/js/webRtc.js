@@ -3,13 +3,13 @@ const existingTracks = [];
 const configuration = {
   iceServers: [
     {
-      urls: "stun1.l.google.com:19302"
+      urls: "stun:stun1.l.google.com:19302"
     },
     {
-      urls: "stun2.l.google.com:19302"
+      urls: "stun:stun2.l.google.com:19302"
     },
     {
-      urls: "stun3.l.google.com:19302"
+      urls: "stun:stun3.l.google.com:19302"
     }
     // ,
     // {
@@ -21,7 +21,6 @@ const configuration = {
 };
 
 socket.on("update", data => {
-  console.log(data);
   if (data.connectionHandShake) {
     const handsh = data.connectionHandShake;
     if (handsh.type === "offer") {
