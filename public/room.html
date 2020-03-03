@@ -19,7 +19,7 @@
     }
 
     .container-fluid {
-      margin-top: 3%;
+      margin-top: 1%;
     }
 
     .row.display-flex {
@@ -36,6 +36,15 @@
 
 <body>
   <div class="container-fluid">
+    <div class="row">
+      <div class="col-md">
+        <div class="card">
+          <div class="card-body">
+            Please share this url to invite other users: <input id="shareInput" class="form-control" type="text">
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="row">
       <div class="col-md">
         <div class="card">
@@ -57,7 +66,7 @@
         <button id="shareScreen" type="button" class="btn btn-primary" onclick="shareScreen()">Share screen</button>
         <button id="stopShareScreen" type="button" class="btn btn-warning" style="display: none;"
           onclick="stopShareScreen()"> Stop Share screen</button>
-        <a href= "/" type="button" class="btn btn-danger">Leave room</a>
+        <a href="/" type="button" class="btn btn-danger">Leave room</a>
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

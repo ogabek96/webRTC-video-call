@@ -1,5 +1,6 @@
 const localView = document.getElementById("localView");
 const remoteView = document.getElementById("remoteView");
+const shareInput = document.getElementById("shareInput");
 const shareScreenButton = document.getElementById("shareScreen");
 const stopShareScreenButton = document.getElementById("stopShareScreen");
 
@@ -48,3 +49,4 @@ async function stopShareScreen() {
 localView.addEventListener("dblclick", openFullscreen);
 remoteView.addEventListener("dblclick", openFullscreen);
 localCameraView();
+shareInput.value = window.location.href;
