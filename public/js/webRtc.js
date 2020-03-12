@@ -49,10 +49,10 @@ function createRTCPeerConnection() {
         existingTracks.push(connection.addTrack(track, localStream));
       }
 
-      connection.ontrack = event => {
-        console.log("on track");
-        remoteView.srcObject = event.streams[0];
-      };
+      // connection.ontrack = event => {
+      //   console.log("on track");
+      //   remoteView.srcObject = event.streams[0];
+      // };
 
       connection.onicecandidate = event => {
         if (event.candidate) {
