@@ -4,8 +4,8 @@ const configuration = {
   iceServers: [
     {
       urls: "turn:turnserver.appearin.net:443?transport=udp",
-      credential: "Vnin1sKI3UWBaXNlXJlL8Y+a9Co=",
-      username: "cee6db54-9811-4ce4-9520-f73f2e2403a3:1583256285"
+      credential: "xOXvyhbA+OOOvON+yjJlFrad2y0=",
+      username: "196a444c-c2c6-49f1-973c-c0ff3ad497e6:1584683669"
     },
     {
       urls: "stun:stun1.l.google.com:19302"
