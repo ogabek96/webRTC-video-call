@@ -63,7 +63,7 @@ function createRTCPeerConnection() {
       };
 
       connection.onnegotiationneeded = e => {
-        if (pc.signalingState != "stable") return;
+        if (connection.signalingState != "stable") return;
       }
 
       resolve(true);
