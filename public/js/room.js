@@ -45,6 +45,34 @@ async function stopShareScreen() {
     console.log(e);
   }
 }
+function audioMute() {
+  let audioTracks = localStream.getAudioTracks();
+  for(let i = 0; i < audioTracks.length; ++ i)
+    audioTracks[i].enabled = !audioTracks[i].enabled;
+  if(audioTracks[0].enabled) {
+    document.getElementById('audio-mute').style.display = 'inline-block';
+    document.getElementById('audio-unmute').style.display = 'none';
+  } else {
+    document.getElementById('audio-mute').style.display = 'none';
+    document.getElementById('audio-unmute').style.display = 'inline-block';
+  }
+  console.log(audioTracks);
+}
+
+function videoMute() {
+  let videoTracks = localStream.getVideoTracks();
+  videoTracks[0].muted = true;
+  for(let i = 0; i < videoTracks.length; ++ i)
+    videoTracks[i].enabled = !videoTracks[i].enabled;
+  if(videoTracks[0].enabled) {
+    document.getElementById('video-mute').style.display = 'inline-block';
+    document.getElementById('video-unmute').style.display = 'none';
+  } else {
+    document.getElementById('video-mute').style.display = 'none';
+    document.getElementById('video-unmute').style.display = 'inline-block';
+  }
+  console.log(videoTracks);
+}
 
 localView.addEventListener("dblclick", openFullscreen);
 remoteView.addEventListener("dblclick", openFullscreen);

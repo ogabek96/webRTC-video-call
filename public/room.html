@@ -63,6 +63,10 @@
     </div>
     <div class="row mt-2">
       <div class="col">
+        <button id="audio-mute" onclick="audioMute()" type="button" class="btn btn-dark">Audio mute</button>
+        <button id="audio-unmute" onclick="audioMute()" type="button" class="btn btn-info" style="display: none">Audio unmute</button>
+        <button id="video-mute" onclick="videoMute()" type="button" class="btn btn-dark">Video mute</button>
+        <button id="video-unmute" onclick="videoMute()" type="button" class="btn btn-info" style="display: none">Video unmute</button>
         <button id="shareScreen" type="button" class="btn btn-primary" onclick="shareScreen()">Share screen</button>
         <button id="stopShareScreen" type="button" class="btn btn-warning" style="display: none;"
           onclick="stopShareScreen()"> Stop Share screen</button>
