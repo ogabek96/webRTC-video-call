@@ -10,7 +10,8 @@ async function localCameraView() {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({
       video: true,
-      audio: true
+      audio: true,
+      facingMode: { exact: "environment" }
     });
     localView.srcObject = stream;
     localStream = stream;
